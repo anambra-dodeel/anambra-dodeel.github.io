@@ -8,7 +8,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
             var opt = {
-                margin:       1,
+                margin:       0.1,
                 filename:     'introduction-letter.pdf',
                 image:        { type: 'jpeg', quality: 0.98 },
                 html2canvas:  { scale: 2, useCORS: false},
@@ -27,7 +27,7 @@
                 var fullname = document.querySelector("#fullname").value
                 populate_letter(statecode, fullname)
                 const element = document.querySelector("#introduction-letter");
-                console.log(html2pdf().set(opt).from(element).save())
+                html2pdf().set(opt).from(element).save()
             }
         </script>
     </head>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <title>Anambra Dodeel</title>
+        <link type="text/css" rel="stylesheet" href="src/styles.css">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+        <script>
+            var opt = {
+                margin:       1,
+                filename:     'introduction-letter.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 4 },
+                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            const populate_letter = (statecode, fullname) => {
+                var corpername = document.querySelector(".corper-name");
+                var corperstatecode = document.querySelector(".corper-statecode");
+                corperstatecode.textContent = statecode;
+                corpername.textContent = fullname;
+            }
+
+            const generatePDF = () => {
+                var statecode = document.querySelector("#statecode").value
+                var fullname = document.querySelector("#fullname").value
+                console.log(statecode)
+                console.log(fullname)
+                populate_letter(statecode, fullname)
+                const element = document.querySelector(".content");
+                html2pdf().set(opt).from(element).save()
+            }
+        </script>
+    </head>
+    <body>
+        <div class="form">
+            <div class="title">Welcome</div>
+            <div class="subtitle">Print your introduction letter</div>
+            <div class="input-container ic1">
+              <input id="fullname" class="input" type="text" placeholder=" " />
+              <div class="cut"></div>
+              <label for="fullname" class="placeholder">Full name</label>
+            </div>
+            <div class="input-container ic2">
+              <input id="statecode" class="input" type="text" placeholder=" " />
+              <div class="cut"></div>
+              <label for="statecode" class="placeholder">State Code (AN/22A/0000)</label>
+            </div>
+            <!-- <div class="input-container ic2">
+              <input id="email" class="input" type="text" placeholder=" " />
+              <div class="cut cut-short"></div>
+              <label for="email" class="placeholder">Email</>
+            </div> -->
+            <button type="text" class="submit" onclick="generatePDF()">Download Letter</button>
+        </div>
+        <div id="introduction-letter">
+            <div class="content">
+                <div class="letter-head"></div>
+                <div class="date">
+                    April 7, 2022
+                </div>
+                <div class="to-address">
+                    The LGI,<br>
+                    NYSC Secretariat, <br>
+                    Dear Sir/Ma, <br>
+                </div>
+                <div class="heading">
+                    <h3>LETTER OF INTRODUCTION (MIND THE GAP DIGITAL ONBOARDERS & DEEL AMBASSADORS CDS GROUP)</h3>
+                </div>
+                <div class="body">
+                    <p>
+                        This is to introduce  <span class="corper-name"></span> with State Code <span class="corper-statecode"></span> 
+                        as a member of the <strong>Mind The Gap Digital Onboarders & DEEL Ambassadors CDS Group</strong> in your state which was launched on Thursday, 
+                        the 3rd day of June, 2021 by the Hon. Minister for Youths & SportsDevelopment,Mr.SundayDare.
+                    </p>
+
+                    <h5>WHAT IS A DIGITAL ONBOARDER & DEEL AMBASSADOR CDS?</h5>
+                    <p>The Digital Onboarders & DEEL Ambassadors CDS is a Special CDS Group with a goal to Train,Mentor andSupport members of the CDS to;</p>
+                    <ol>
+                        <li>Acquire relevant digital skills based on the DEEL programme of the Hon.Minister and Ministry and
+                        <li>Become a DEEL Ambassador by using the skills acquired to assist 5 Small Businesses to use Digital skills/tools to grow their businesses
+                        <li>And train100 Students in their host communities to use Digital skills and tools to become better students and Digital Citizens.
+                        <li>participate in the Annual <strong>#TakeTheDEEL</strong> InterstateHackathon
+                    </ol>
+                    <p>
+                        This is a very unique CDS Group and it's very important to the Hon.Minister and Ministry.We would therefore appreciate every form of support 
+                        given to the bearer of this letter towards a successful program implementation.
+                    </p>
+                    <p>Thank you very much for your anticipated support.</p>
+                    <div class="closing">
+                        <p>O. Maduka</p>
+
+                        <p>
+                            Comm. Manager,<br>
+                            Mindthe_Gap<br>
+                            (Anambra State)
+                        </p>
+
+                        <p>08068077771</p>
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

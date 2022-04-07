@@ -126,12 +126,18 @@ body {
 
 
 
-#introduction-letter {
+.letter-area {
     display: none;
 }
 
+#introduction-letter {
+    font-size: 12px;
+    font-family: Calibri, sans-serif;
+}
+
 .letter-head {
-    /* background-image: url("../img/mtg_header.jpeg"); */
+    background-image: url("../img/mtg_header.jpeg");
+    background-color: black;
     width: 100%;
     height: 150px;
     background-size: cover;
@@ -150,6 +156,4 @@ body {
 
 .content {
     margin: 20px;
-    font-size: 12px;
-    font-family: Calibri, sans-serif;
 }

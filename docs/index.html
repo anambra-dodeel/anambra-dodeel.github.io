@@ -16,8 +16,15 @@
             };
 
             const populate_letter = (statecode, fullname) => {
+                var months = ['January','February','March','April',
+                'May','June','July', 'August','September','October',
+                'November','December']; 
+                var today = new Date();
+                var date = document.querySelector(".date")
                 var corpername = document.querySelector(".corper-name");
                 var corperstatecode = document.querySelector(".corper-statecode");
+                today.setTime(today.getTime() + (1000*3600*24));
+                date.innerHTML = months[today.getMonth()] + " " + today.getDate()+ ", " + today.getFullYear();
                 corperstatecode.textContent = statecode;
                 corpername.textContent = fullname;
             }
@@ -33,7 +40,10 @@
     </head>
     <body>
         <div class="form">
-            <div class="title">Welcome</div>
+            <div>
+                <div class="logo"></div>
+                <div class="title">DO-DEEL CDS Anambra</div>
+            </div>
             <div class="subtitle">Print your introduction letter</div>
             <div class="input-container ic1">
               <input id="fullname" class="input" type="text" placeholder=" " />
@@ -52,7 +62,6 @@
                 <div class="letter-head"></div>
                 <div class="content">
                     <div class="date">
-                        April 7, 2022
                     </div>
                     <div class="to-address">
                         The LGI,<br>

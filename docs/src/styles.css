@@ -145,7 +145,7 @@ body {
     display: none;
     background-color: #fff;
     max-width: 100%;
-    max-height: 100%;
+    max-height: 1500px;
 }
 
 #introduction-letter {
@@ -154,6 +154,8 @@ body {
 }
 
 .letter-head {
+    position: relative;
+    top: 0;
     background-image: url("../img/mtg_header.jpeg");
     background-color: black;
     width: 100%;

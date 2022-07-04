@@ -7,14 +7,6 @@
         <link type="text/css" rel="stylesheet" href="src/styles.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <script>
-            var opt = {
-                margin:       0.1,
-                filename:     'introduction-letter.pdf',
-                image:        { type: 'jpeg', quality: 0.98 },
-                html2canvas:  { scale: 2, useCORS: false},
-                jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
-
             const populate_letter = (statecode, fullname) => {
                 var months = ['January','February','March','April',
                 'May','June','July', 'August','September','October',
@@ -32,6 +24,13 @@
             const generatePDF = () => {
                 var statecode = document.querySelector("#statecode").value
                 var fullname = document.querySelector("#fullname").value
+                var opt = {
+                    margin:       0,
+                    filename:     `introduction-letter_${fullname}.pdf`,
+                    image:        { type: 'jpeg', quality: 0.98 },
+                    html2canvas:  { scale: 2, useCORS: false},
+                    jsPDF:        { unit: 'in', format: 'letter', orientation: 'portrait' }
+                };
                 populate_letter(statecode, fullname)
                 const element = document.querySelector("#introduction-letter");
                 html2pdf().set(opt).from(element).save()
